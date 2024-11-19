@@ -16,9 +16,11 @@ const getCountryData = country => {
     console.log(data);
 
     const currencies = data.currencies;
-
     const currenciesName = Object.values(currencies)[0].name;
     const currenciesSymbol = Object.values(currencies)[0].symbol;
+
+    const languages = data.languages;
+    const languagesName = [Object.values(languages)].map(lang => lang);
 
     const html = `
         <article class="country">
@@ -29,7 +31,7 @@ const getCountryData = country => {
             <p class="country__row"><span>👨‍👩‍👧‍👦</span>${(
               +data.population / 1000000
             ).toFixed(1)} millions</p>
-            <p class="country__row"><span>🗣️</span>${data.languages.ukr}</p>
+            <p class="country__row"><span>🗣️</span>${languagesName}</p>
             <p class="country__row"><span>💰</span>${currenciesSymbol} ${currenciesName}</p>
           </div>
         </article>
@@ -42,4 +44,4 @@ const getCountryData = country => {
 };
 
 getCountryData('ukraine');
-getCountryData('usa');
+getCountryData('canada');
